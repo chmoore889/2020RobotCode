@@ -25,7 +25,7 @@ public class Driver {
         drive = new Drivetrain();
 
         //Init driveType
-        driveType = new SendableChooser<>();
+	driveType = new SendableChooser<>();
         driveType.setDefaultOption("Arcade", arcade);
         driveType.addOption("Tank", tank);
         SmartDashboard.putData("Drive Type", driveType);
@@ -44,26 +44,26 @@ public class Driver {
     }
 	
     private class DriveThread implements Runnable {
-		Drivetrain drive;
-		SendableChooser<Byte> driveType;
-		SendableChooser<Byte> neutralModeType;
+	Drivetrain drive;
+	SendableChooser<Byte> driveType;
+	SendableChooser<Byte> neutralModeType;
 
-		public PlotThread(Driver driver) {
-			this.drive = driver.drive;
-			this.driveType = driver.driveType;
-			this.neutralModeType = driver.neutralModeType;
-		}
+	public PlotThread(Driver driver) {
+		this.drive = driver.drive;
+		this.driveType = driver.driveType;
+		this.neutralModeType = driver.neutralModeType;
+	}
 
-		public void run() {
-			while (true) {
-				try {
-                    Thread.sleep(20);//Sleep for 20ms to reduse used network bandwidth
-				} 
-				catch (Exception e) {
-				}
-                runDriveControls();
+	public void run() {
+		while (true) {
+			try {
+                    		Thread.sleep(20);//Sleep for 20ms to reduse used network bandwidth
+			} 
+			catch (Exception e) {
 			}
+                	runDriveControls();
 		}
+	}
         
         private void runDriveControls() {
             //driveType Selection
@@ -89,5 +89,5 @@ public class Driver {
                 System.out.println("Error: No coast type chosen");
             }
         }
-	}
+    }
 }
