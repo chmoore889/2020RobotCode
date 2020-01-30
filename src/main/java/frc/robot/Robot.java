@@ -71,13 +71,16 @@ public class Robot extends TimedRobot {
 
   }
   
+  @Override
+  public void teleopInit() {
+    drive.initDriveThread();
+  }
 
   /**
    * This function is called periodically during operator control.
    */
   @Override
   public void teleopPeriodic() {
-    drive.runDriveControls();
     op.opControls();
   }
 
