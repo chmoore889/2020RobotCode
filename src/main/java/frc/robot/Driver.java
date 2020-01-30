@@ -48,7 +48,7 @@ public class Driver {
 	SendableChooser<Byte> driveType;
 	SendableChooser<Byte> neutralModeType;
 
-	public PlotThread(Driver driver) {
+	public DriveThread(Driver driver) {
 		this.drive = driver.drive;
 		this.driveType = driver.driveType;
 		this.neutralModeType = driver.neutralModeType;
