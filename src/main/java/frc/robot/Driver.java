@@ -25,7 +25,7 @@ public class Driver {
         drive = new Drivetrain();
 
         //Init driveType
-	driveType = new SendableChooser<>();
+        driveType = new SendableChooser<>();
         driveType.setDefaultOption("Arcade", arcade);
         driveType.addOption("Tank", tank);
         SmartDashboard.putData("Drive Type", driveType);
@@ -51,7 +51,7 @@ public class Driver {
 
 	public DriveThread(Driver driver) {
 		this.drive = driver.drive;
-        this.joy = driver.joy;
+		this.joy = driver.joy;
 		this.driveType = driver.driveType;
 		this.neutralModeType = driver.neutralModeType;
 	}
