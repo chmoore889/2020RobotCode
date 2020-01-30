@@ -44,28 +44,28 @@ public class Driver {
     }
 	
     private class DriveThread implements Runnable {
-	Drivetrain drive;
-	Controller joy;
-	SendableChooser<Byte> driveType;
-	SendableChooser<Byte> neutralModeType;
+        Drivetrain drive;
+        Controller joy;
+        SendableChooser<Byte> driveType;
+        SendableChooser<Byte> neutralModeType;
 
-	public DriveThread(Driver driver) {
-		this.drive = driver.drive;
-		this.joy = driver.joy;
-		this.driveType = driver.driveType;
-		this.neutralModeType = driver.neutralModeType;
-	}
+        public DriveThread(Driver driver) {
+            this.drive = driver.drive;
+            this.joy = driver.joy;
+            this.driveType = driver.driveType;
+            this.neutralModeType = driver.neutralModeType;
+        }
 
-    public void run() {
-	    while (true) {
-	        try {
-                Thread.sleep(20);//Sleep for 20ms to reduse used network bandwidth
-	        } 
-	        catch (Exception e) {
-	        }
-            runDriveControls();
-	    }
-	}
+        public void run() {
+            while (true) {
+                try {
+                    Thread.sleep(20);//Sleep for 20ms to reduse used network bandwidth
+                } 
+                catch (Exception e) {
+                }
+                runDriveControls();
+            }
+        }
         
         private void runDriveControls() {
             //driveType Selection
