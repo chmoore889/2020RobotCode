@@ -82,7 +82,7 @@ public class Driver {
             if(neutralModeType.getSelected().equals(brake)) {
                 drive.setNeutralMode(NeutralMode.Brake);
             }
-			else if(neutralModeType.getSelected().equals(coast)) {
+	    else if(neutralModeType.getSelected().equals(coast)) {
                 drive.setNeutralMode(NeutralMode.Coast);
             }
             else {
