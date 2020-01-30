@@ -43,7 +43,7 @@ public class Driver {
 		new Thread(driveThread).start();
     }
 	
-	private class DriveThread implements Runnable {
+    private class DriveThread implements Runnable {
 		Drivetrain drive;
 		SendableChooser<Byte> driveType;
 		SendableChooser<Byte> neutralModeType;
@@ -57,12 +57,11 @@ public class Driver {
 		public void run() {
 			while (true) {
 				try {
-					Thread.sleep(20);//Sleep for 20ms to reduse used network bandwidth
+						Thread.sleep(20);//Sleep for 20ms to reduse used network bandwidth
 				} 
-                catch (Exception e) {
+				catch (Exception e) {
 				}
-
-				runDriveControls();
+					runDriveControls();
 			}
 		}
         
@@ -83,7 +82,7 @@ public class Driver {
             if(neutralModeType.getSelected().equals(brake)) {
                 drive.setNeutralMode(NeutralMode.Brake);
             }
-            else if(neutralModeType.getSelected().equals(coast)) {
+			else if(neutralModeType.getSelected().equals(coast)) {
                 drive.setNeutralMode(NeutralMode.Coast);
             }
             else {
