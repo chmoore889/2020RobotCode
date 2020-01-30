@@ -40,7 +40,7 @@ public class Driver {
     public void initDriveThread() {
         //Thread initialization
         driveThread = new DriveThread(this);
-		new Thread(driveThread).start();
+	new Thread(driveThread).start();
     }
 	
     private class DriveThread implements Runnable {
