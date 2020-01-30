@@ -28,7 +28,7 @@ public class Drivetrain {
         rightFront.set(ControlMode.PercentOutput, -(straight - left + right)); 
     }
 
-    public static void drive(double speed) {
+    public void drive(double speed) {
         leftFront.set(ControlMode.PercentOutput, speed);
         rightFront.set(ControlMode.PercentOutput, speed);
     }
