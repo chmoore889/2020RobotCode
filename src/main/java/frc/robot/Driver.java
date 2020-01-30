@@ -39,21 +39,12 @@ public class Driver {
     
     public void initDriveThread() {
         //Thread initialization
-        driveThread = new DriveThread(this);
-	    new Thread(driveThread).start();
+        driveThread = new DriveThread();
+	new Thread(driveThread).start();
     }
 	
     private class DriveThread implements Runnable {
-        Drivetrain drive;
-        Controller joy;
-        SendableChooser<Byte> driveType;
-        SendableChooser<Byte> neutralModeType;
-
-        public DriveThread(Driver driver) {
-            this.drive = driver.drive;
-            this.joy = driver.joy;
-            this.driveType = driver.driveType;
-            this.neutralModeType = driver.neutralModeType;
+        public DriveThread() {
         }
 
         public void run() {
