@@ -40,29 +40,31 @@ public class Driver {
     public void initDriveThread() {
         //Thread initialization
         driveThread = new DriveThread(this);
-	new Thread(driveThread).start();
+	    new Thread(driveThread).start();
     }
 	
     private class DriveThread implements Runnable {
 	Drivetrain drive;
+	Controller joy;
 	SendableChooser<Byte> driveType;
 	SendableChooser<Byte> neutralModeType;
 
 	public DriveThread(Driver driver) {
 		this.drive = driver.drive;
+        this.joy = driver.joy;
 		this.driveType = driver.driveType;
 		this.neutralModeType = driver.neutralModeType;
 	}
 
-	public void run() {
-		while (true) {
-			try {
-                    		Thread.sleep(20);//Sleep for 20ms to reduse used network bandwidth
-			} 
-			catch (Exception e) {
-			}
-                	runDriveControls();
-		}
+    public void run() {
+	    while (true) {
+	        try {
+                Thread.sleep(20);//Sleep for 20ms to reduse used network bandwidth
+	        } 
+	        catch (Exception e) {
+	        }
+            runDriveControls();
+	    }
 	}
         
         private void runDriveControls() {
