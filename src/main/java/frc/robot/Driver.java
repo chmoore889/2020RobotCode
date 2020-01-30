@@ -57,11 +57,11 @@ public class Driver {
 		public void run() {
 			while (true) {
 				try {
-						Thread.sleep(20);//Sleep for 20ms to reduse used network bandwidth
+                    Thread.sleep(20);//Sleep for 20ms to reduse used network bandwidth
 				} 
 				catch (Exception e) {
 				}
-					runDriveControls();
+                runDriveControls();
 			}
 		}
         
