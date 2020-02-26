@@ -1,29 +1,22 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import frc.robot.subsystems.*;
 
 public class Operator {
 
     private Controller OP;
     private Wheels wheels;
-    private ControlPanel controlPanel;
+//    private ControlPanel controlPanel;
 
-    private boolean startedPositionControl;
-    private boolean finishedPositionControl;
-    
-    private long lastButtonPress;//Last time rotation control button was pressed
-    private final int BUTTON_DELAY = 500;//Delay time for rotation control button in ms
-    
-    private long lastPositionPress;//Last time position control button was pressed
-    private final int POSITION_TIMEOUT = 1000;//Position control timeout in ms
+    // private boolean startedPositionControl;
+    // private boolean finishedPositionControl;
     
     public Operator(int port) {
         OP = new Controller(port);
         wheels = new Wheels();
-        controlPanel = new ControlPanel();
-        
-        resetControlPanel();
-        lastButtonPress = (Timer.getFPGATimestamp()/1000);
+//        controlPanel = new ControlPanel();
+//        resetControlPanel();
     }
 
     public void opControls() {
@@ -41,51 +34,52 @@ public class Operator {
         }
 
         if (OP.getOButton()) {
-            wheels.spinIntake();
-        } else {
+            if(wheels.printSonar()>0){ //this will be a correct number eventually
+                wheels.stopIntake();
+                wheels.spinBigWheelFor();
+            }
+            else {
+                wheels.spinIntake();
+            }
+        } 
+        else {
             wheels.stopIntake();
+            wheels.stopBigWheel();
         }
+
 
         if (OP.getSquareButton()) {
             wheels.spinShooter();
         } else {
             wheels.stopShooter();
-        }
-        
+        }        
     }
     
     private void controlPanelControl(){
-        //Position control
-        if(OP.getRightBumper()) {
-            startedPositionControl = true;
-            lastPositionPress = (Timer.getFPGATimestamp()/1000);
-            flipUpMotor();
-        }
+        // //Position control
+        // if(OP.getRightBumper()) {
+        //     startedPositionControl = true;
+        //     flipUpMotor();
+        // }
         
-        if(startedPositionControl && !finishedPositionControl){
-            finishedPositionControl = positionControl();
-        }
+        // if(startedPositionControl && !finishedPositionControl){
+        //     finishedPositionControl = positionControl();
+        // }
         
-        if(finishedPositionControl) {
-            flipDownMotor();
-            resetControlPanel();
-        }
+        // if(finishedPositionControl) {
+        //     flipDownMotor();
+        //     resetControlPanel();
+        // }
         
-        //Pos control timeout
-        if((lastPositionPress + POSITION_TIMEOUT) < (Timer.getFPGATimestamp()/1000)) {
-            finishedPositionControl = true;
-        }
-        
-        //Rotation control
-        if(OP.getLeftBumper() && ((lastButtonPress + BUTTON_DELAY) < (Timer.getFPGATimestamp()/1000))) {
-            addControlPanelRotation(1);//Each button press queues another rotation for the motor to spin through
-            lastButtonPress = (Timer.getFPGATimestamp()/1000);
-        }
-        rotationControl();
+        // //Rotation control
+        // if(OP.getLeftBumper()) {
+        //     addControlPanelRotation(1);//Each button press queues another rotation for the motor to spin through
+        // }
+        // rotationControl();
     }
             
-    private void resetControlPanel() {
-        startedPositionControl = false;
-        finishedPositionControl = false;
-    }
+    // private void resetControlPanel() {
+    //     startedPositionControl = false;
+    //     finishedPositionControl = false;
+    // }
 }
