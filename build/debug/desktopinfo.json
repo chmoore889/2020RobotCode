@@ -1,5 +1,14 @@
 [
   {
+    "name": "2020RobotCode (in project 2020RobotCode)",
+    "file": "C:\\Users\\sydwa\\OneDrive\\Documents\\GitHub\\2020RobotCode\\build\\libs\\2020RobotCode.jar",
+    "extensions": [
+      "C:\\Users\\sydwa\\OneDrive\\Documents\\GitHub\\2020RobotCode\\build\\tmp\\expandedArchives\\halsim_gui-2020.2.2-windowsx86-64.zip_f45deb918a703b9a683ad4047e06ed3c\\windows\\x86-64\\shared\\halsim_gui.dll"
+    ],
+    "librarydir": "C:\\Users\\sydwa\\OneDrive\\Documents\\GitHub\\2020RobotCode\\build\\tmp\\jniExtractDir",
+    "mainclass": "frc.robot.Main"
+  },
+  {
     "name": "New2020Robot (in project New2020Robot)",
     "file": "C:\\Users\\sydwa\\OneDrive\\Documents\\GitHub\\New2020Robot\\build\\libs\\New2020Robot.jar",
     "extensions": [

@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 
@@ -25,11 +26,19 @@ public class Drivetrain {
         
         leftFront.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
         rightFront.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
+
+        leftFront.setNeutralMode(NeutralMode.Brake);
+        rightFront.setNeutralMode(NeutralMode.Brake);
+
+        leftFront.configOpenloopRamp(0.3);
+        rightFront.configOpenloopRamp(0.3);
     }
         
-    public void arcadeDrive(double straight, double left, double right) { 
-        leftFront.set(ControlMode.PercentOutput, straight + left - right);
-        rightFront.set(ControlMode.PercentOutput, -(straight - left + right)); 
+    public void arcadeDrive(double straight, double left, double right) {
+        left = left*.40;
+        right = right*.40;
+        leftFront.set(ControlMode.PercentOutput, -(straight + left - right));
+        rightFront.set(ControlMode.PercentOutput, straight - left + right); 
     }
 
     public static void drive(double speed){
