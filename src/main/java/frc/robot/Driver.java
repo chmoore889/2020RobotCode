@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.*;
 
 public class Driver {
-    Controller joy;
+    XBOXController joy;
     Drivetrain drive;
     Climber climb;
 
@@ -14,7 +14,7 @@ public class Driver {
     private final Byte tank = 1;
 
     public Driver(int port) {
-        joy = new Controller(port);
+        joy = new XBOXController(port);
         drive = new Drivetrain();
         climb = new Climber();
 
@@ -28,7 +28,6 @@ public class Driver {
         //DRIVE CONTROLS
         if(driveType.getSelected().equals(arcade)) {
             drive.arcadeDrive(joy.getRightYAxis(), joy.getLeftTrigger(), joy.getRightTrigger());
-            System.out.println("Y Axis: " + joy.getRightYAxis() + "     Left: " + joy.getLeftTrigger() + "     Right: " + joy.getRightYAxis());
         } else if(driveType.getSelected().equals(tank)) {
             drive.tankDrive(joy.getLeftYAxis(), joy.getRightYAxis());
         } else {
