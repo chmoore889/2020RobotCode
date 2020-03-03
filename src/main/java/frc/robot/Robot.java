@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.subsystems.Wheels;
+import frc.robot.subsystems.DriverVision;
 
 
 /**
@@ -28,11 +29,21 @@ public class Robot extends TimedRobot {
 
   Driver drive;
   Operator op;
+  DriverVision intakeCamera;
 
   @Override
   public void robotInit() {
     drive = new Driver(0);
     op = new Operator(1);
+
+    try{
+		  intakeCamera = new DriverVision("Intake Camera", 0);
+      intakeCamera.startUSBCamera();
+		} catch(Exception e){
+			
+		} finally {
+			System.out.println("Camera Isn't Working!!!");
+		}
   }
 
   /**
